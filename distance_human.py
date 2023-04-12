@@ -133,8 +133,8 @@ try:
         depth_list = list()
         person_id_list = list()
         for i in range(len(bboxes)):
+
             label = str(CLASSES[int(class_ids[i][0])])
-            # only detect person
             if label == 'person':
                 if i in result_boxes:
                     bbox = list(map(int, bboxes[i])) 
