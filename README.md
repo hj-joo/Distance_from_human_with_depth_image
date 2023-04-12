@@ -2,15 +2,18 @@
 We get distance from human with realsense depth camera using human detection with yolov8 and we send the results to server.
 
 
-## 1. Install Realsense Library in Ubuntu 20.04
+## 1. Install Realsense Library in Ubuntu
 ```
-sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-key F6E65AC044F831AC80A06380C8B3A55A6F3EFCDE || sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-key F6E65AC044F831AC80A06380C8B3A55A6F3EFCDE
-export http_proxy="http://<proxy>:<port>"
-sudo add-apt-repository "deb https://librealsense.intel.com/Debian/apt-repo $(lsb_release -cs) main" -u
-sudo apt-get install librealsense2-dkms
-sudo apt-get install librealsense2-utils
-sudo apt-get install librealsense2-dev
-sudo apt-get install librealsense2-dbg
+sudo apt-get install -y git libssl-dev libusb-1.0-0-dev pkg-config libgtk-3-dev
+sudo apt-get install -y libglfw3-dev libgl1-mesa-dev libglu1-mesa-dev
+
+git clone https://github.com/IntelRealSense/librealsense.git
+cd ./librealsense
+./scripts/setup_udev_rules.sh
+mkdir build && cd build
+cmake ../ -DBUILD_PYTHON_BINDINGS:bool=true
+sudo make uninstall && sudo make clean && sudo make -j4 && sudo make install
+export PYTHONPATH=$PYTHONPATH:/usr/local/lib/python3.X/pyrealsense2
 ```
 
 ## 2. Installation
