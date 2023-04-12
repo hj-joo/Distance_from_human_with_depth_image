@@ -1,5 +1,5 @@
 # Distance_from_human_with_depth_image
-We calculate human distance from realsense depth camera with yolov8
+We get distance from human with realsense depth camera using human detection with yolov8 and we send the results to server.
 
 
 ## 1. Install Realsense Library in Ubuntu 20.04
