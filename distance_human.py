@@ -6,20 +6,9 @@ from ultralytics import YOLO
 from ultralytics.yolo.utils.checks import check_yaml
 from ultralytics.yolo.utils import ROOT, yaml_load
 
-from kafka import KafkaConsumer, KafkaProducer
 import json
 from time import time
 
-
-def Producer(topic_name, data, ip = '203.250.148.120', port = '20517'): # set ip & port
-    producer = KafkaProducer(
-        acks=0,
-        compression_type='gzip',
-        bootstrap_servers=[ip + ':' + port],
-        value_serializer=lambda x: json.dumps(x).encode('utf-8')
-        )
-    producer.send(topic_name,value=data)
-    producer.flush()
 
 
 # parameters
@@ -163,9 +152,6 @@ try:
                             "key": object_data
                     }
                     # print(list_data)
-
-                    # Send to Kafka
-                    Producer('camera_3', list_data)
 
 
                     color = colors[i]
