@@ -22,7 +22,7 @@ git clone "https://github.com/hj-joo/Distance_from_human_with_depth_image.git"
 pip install -r requirements.txt  # install dependencies
 ```
 
-## 3. Get distance from human & Send to server
+## 3. Get distance from human
 ```
 python distance_human.py
 ```
